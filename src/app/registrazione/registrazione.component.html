@@ -1,0 +1,138 @@
+<div class="container  m-5">
+    <div class="row">
+        <div class="col-12 positionCus">
+
+
+
+<form *ngIf="registrazioneForm" [formGroup]="registrazioneForm" (ngSubmit)="onSubmit()" class="formcolor ">
+    <!-- Campo del Nome -->
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" formControlName="nome"  class="formCus"/>
+        <div *ngIf="registrazioneForm.get('nome')?.invalid && registrazioneForm.get('nome')?.touched">
+            <div *ngIf="registrazioneForm.get('nome')?.hasError('required')" class = "coloerror ">
+                Il Nome è un campo obbligatorio.
+            </div>
+        </div>
+    </div>
+    
+    <!-- camp Cognome -->
+    <div>
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" formControlName="cognome" class="formCus" />
+        <div *ngIf="registrazioneForm.get('cognome')?.invalid && registrazioneForm.get('cognome')?.touched">
+            <div *ngIf="registrazioneForm.get('cognome')?.hasError('required')"class = "coloerror ">
+                Il Cognome è un campo obbligatorio.
+            </div>
+        </div>
+    </div>
+    
+    <!-- campo Codice Fiscale -->
+    <div>
+        <label for="codicefiscale">Codice Fiscale:</label>
+        <input type="text" id="codicefiscale" formControlName="codicefiscale" class="formCus" />
+        <div *ngIf="registrazioneForm.get('codicefiscale')?.invalid && registrazioneForm.get('codicefiscale')?.touched">
+            <div *ngIf="registrazioneForm.get('codicefiscale')?.hasError('required')"class = "coloerror ">
+                Il Codice Fiscale è un campo obbligatorio.
+            </div>
+            <div *ngIf="registrazioneForm.get('codicefiscale')?.hasError('pattern')"class = "coloerror ">
+                Il Codice Fiscale deve essere composto da 16 caratteri alfanumerici.
+            </div>
+        </div>
+    </div>
+    
+    <!-- il campo Età -->
+    <div>
+        <label for="eta">Età:</label>
+        <input type="number" id="eta" formControlName="eta" class="formCus" />
+        <div *ngIf="registrazioneForm.get('eta')?.invalid && registrazioneForm.get('eta')?.touched">
+            <div *ngIf="registrazioneForm.get('eta')?.hasError('required')"class = "coloerror ">
+                Età è un campo obbligatorio. Inseriscilo!
+            </div>
+            <div *ngIf="registrazioneForm.get('eta')?.hasError('min')"class = "coloerror ">
+                Devi essere maggiorenne devi avere 18 anni. 
+            </div>
+        </div>
+    </div>
+    
+    <!-- il campoo indirizzo -->
+    <div>
+        <label for="indirizzo">Indirizzo:</label>
+        <input type="text" id="indirizzo" formControlName="indirizzo" class="formCus" />
+        <div *ngIf="registrazioneForm.get('indirizzo')?.invalid && registrazioneForm.get('indirizzo')?.touched">
+            <div *ngIf="registrazioneForm.get('indirizzo')?.hasError('required')"class = "coloerror ">
+                Indirizzo è un campo obbligatorio.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Il campo paese/città -->
+    <div>
+        <label for="paese">Paese:</label>
+        <input type="text" id="paese" formControlName="paese" class="formCus" />
+        <div *ngIf="registrazioneForm.get('paese')?.invalid && registrazioneForm.get('paese')?.touched">
+            <div *ngIf="registrazioneForm.get('paese')?.hasError('required')"class = "coloerror ">
+                Paese è un campo obbligatorio.
+            </div>
+        </div>
+    </div>
+    
+    <!-- il cmapo CAP -->
+    <div>
+        <label for="cap">CAP:</label>
+        <input type="text" id="cap" formControlName="cap" class="formCus" />
+        <div *ngIf="registrazioneForm.get('cap')?.invalid && registrazioneForm.get('cap')?.touched">
+            <div *ngIf="registrazioneForm.get('cap')?.hasError('required')"class = "coloerror ">
+                CAP è un campo obbligatorio.
+            </div>
+            <div *ngIf="registrazioneForm.get('cap')?.hasError('pattern')"class = "coloerror ">
+                Il CAP deve essere composto da 5 cifre.
+            </div>
+        </div>
+    </div>
+    
+    <!-- campo email -->
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" class="formCus" />
+        <div *ngIf="registrazioneForm.get('email')?.invalid && registrazioneForm.get('email')?.touched">
+            <div *ngIf="registrazioneForm.get('email')?.hasError('required')"class = "coloerror ">
+                Email è un campo obbligatorio.
+            </div>
+            <div *ngIf="registrazioneForm.get('email')?.hasError('email')"class = "coloerror ">
+                Inserisci un indirizzo email valido.
+            </div>
+        </div>
+    </div>
+    
+    <!-- il campo password -->
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" class="formCus"/>
+        <div *ngIf="registrazioneForm.get('password')?.invalid && registrazioneForm.get('password')?.touched">
+            <div *ngIf="registrazioneForm.get('password')?.hasError('required')"class = "coloerror ">
+                Password è un campo obbligatorio.
+            </div>
+            <div *ngIf="registrazioneForm.get('password')?.hasError('minlength')"class = "coloerror ">
+                La password deve avere una lunghezza di almeno 8 caratteri.
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottone registrati + animazione carina -->
+    <button type="submit" [disabled]="isSubmitting">Registrati</button>
+    <div *ngIf="isSubmitting" class="mt-4">
+        <div id="preloader_2" class="d-flex text-center">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</form>
+
+<!-- animazione submit -->
+
+</div>
+</div>
+</div>
